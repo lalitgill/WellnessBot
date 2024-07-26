@@ -1,0 +1,25 @@
+{% extends 'adminlte/base.html' %}
+
+{% block page_title %}Add Item{% endblock %}
+{% block breadcrumb_active %}Add Item{% endblock %}
+
+{% block dashboard_content %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Add Item</h3>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        <div class="card-body">
+          {{ form.as_p }}
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

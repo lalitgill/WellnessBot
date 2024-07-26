@@ -1,0 +1,45 @@
+{% extends 'adminlte/base.html' %}
+
+{% block page_title %}Dashboard{% endblock %}
+<!--{% block breadcrumb_active %}Dashboard{% endblock %}-->
+{% block breadcrumb %}Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Items</h3>
+        <div class="card-tools">
+          <a href="{% url 'add_item' %}" class="btn btn-tool"><i class="fas fa-plus"></i> Add Item</a>
+        </div>
+      </div>
+      <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.description }}</td>
+              <td>
+                <form method="post" action="{% url 'delete_item' item.pk %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

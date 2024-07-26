@@ -1,0 +1,42 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Uploaded Files</h3>
+        <div class="card-tools">
+            <a href="{% url 'file_upload' %}" class="btn btn-primary btn-sm">
+                <i class="fas fa-upload"></i> Upload New File
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Description</th>
+                    <th>Uploaded At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in files %}
+                <tr>
+                    <td>
+                        <a href="{{ report.file.url }}">{{ report.file.name }}</a>
+                    </td>
+                    <td>{{ report.description }}</td>
+                    <td>{{ report.uploaded_at }}</td>
+                    <td>
+                        <a href="{% url 'file_edit' report.id %}" class="btn btn-info btn-sm">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

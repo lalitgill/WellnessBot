@@ -1,0 +1,12 @@
+{% extends 'adminlte/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content_header %}
+    <h1 class="m-0 text-dark">{% block page_title %}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% block dashboard_content %}{% endblock %}
+{% endblock %}
+
