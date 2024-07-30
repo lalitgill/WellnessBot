@@ -17,10 +17,13 @@ from langchain.chains import RetrievalQA
 from decouple import config
 GeminiKey = config('GeminiKey', cast=str)
 genai.configure(api_key=GeminiKey)
+from langchain_community.chat_models import ChatOpenAI
 
 from include.DocumentStoreRetriveEmbed import DocumentStore
 
 document_store = DocumentStore()
+
+os.environ["OPENAI_API_KEY"] = config('OPENAI_API_KEY', cast=str)
 
 
 def load_user_data(user_id):
@@ -89,7 +92,8 @@ def chat_view(request):
         full_context = f"Summary:\n{summary}\n\nDetailed Context:\n{context}"
 
 
-        llm = GoogleGenerativeAI(model="gemini-pro", google_api_key=GeminiKey)
+        #llm = GoogleGenerativeAI(model="gemini-pro", google_api_key=GeminiKey)
+        llm = ChatOpenAI(model_name="gpt-4", temperature=0.2)
         prompt_template = """
                 You are a medical assistant tasked with answering questions based on OCR-extracted and LLM-formatted medical reports. 
                 Use the following information to answer the question. Pay special attention to laboratory results, diagnoses, and any mentions of specific diseases or viruses.
