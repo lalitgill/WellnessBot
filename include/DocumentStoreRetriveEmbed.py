@@ -32,12 +32,13 @@ def get_gemini_llm():
     return GeminiLLM()
 
 
-def format_medical_text(extracted_text):
+def format_medical_text(extracted_text, user_uuid):
     llm = get_gemini_llm()
     prompt = f"""
     You are a medical document formatting assistant. Your task is to take the following OCR-extracted text from a medical report and format it into a structured, easy-to-read format. 
     Identify key sections such as Patient Information, Medical History, Diagnosis, Medications, Laboratory Results, and Recommendations. 
     If a section is not present, do not include it. Use appropriate headers and maintain the original information and values.
+    Additionally, replace all person names with {user_uuid}.
 
     Here's the extracted text:
 
@@ -106,11 +107,11 @@ class DocumentStore:
             )
         return self.vectorstores[collection_name]
 
-    def store_document(self, user_id, filename, extracted_text, metadata):
+    def store_document(self, user_id, filename, extracted_text, metadata, user_uuid):
         vectorstore = self.get_vectorstore(user_id)
 
         # Format the extracted text
-        formatted_text = format_medical_text(extracted_text)
+        formatted_text = format_medical_text(extracted_text, user_uuid)
         # Generate a summary
         summary = generate_summary(formatted_text)
         # Update metadata with summary

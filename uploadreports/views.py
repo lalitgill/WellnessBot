@@ -55,7 +55,7 @@ def file_upload(request):
                 "report_type": "medical",
                 "upload_date": time.strftime("%Y-%m-%d %H:%M:%S")
             }
-            document_store.store_document(request.user.id, uploaded_file.name, extracted_text, metadata)
+            document_store.store_document(request.user.id, uploaded_file.name, extracted_text, metadata, request.user.user_uuid)
             document_store.persist_all()
             file_upload.extracted_text = extracted_text
             file_upload.summary = ''

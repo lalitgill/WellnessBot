@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .managers import UserManager
+import uuid
 
 # Create your models here.
 class UserRole(models.Model):
@@ -14,6 +15,7 @@ class User(AbstractUser):
     #app_id = models.CharField(max_length=80)
     is_active = models.BooleanField(default=True)
     organisation_name = models.CharField(max_length=100, null=True)
+    user_uuid = models.UUIDField(null=True, blank=True)
     objects = UserManager()
 
     class Meta:

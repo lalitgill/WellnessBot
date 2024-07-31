@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.urls import reverse
+import uuid
 
 
 @login_required
@@ -14,6 +15,8 @@ def register_user(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)  # Use the custom form
         if form.is_valid():
+            user = form.save(commit=False)
+            user.user_uuid = uuid.uuid4()
             form.save()
             return redirect(reverse('dashboard'))
     else:
