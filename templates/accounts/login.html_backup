@@ -2,51 +2,6 @@
 
 {% block body_class %}login-page{% endblock %}
 
-{% block stylesheets %}
-{{ block.super }}
-<style>
-    :root {
-        --royal-blue: #4169E1;
-        --light-blue: #E6EAFF;
-        --dark-blue: #2A45A8;
-        --white: #FFFFFF;
-    }
-    body.login-page {
-        background-color: var(--royal-blue) !important;
-    }
-    .login-box {
-        background-color: var(--white);
-        border-radius: 5px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
-    .login-logo a {
-        color: var(--dark-blue) !important;
-    }
-    .login-card-body {
-        background-color: var(--white);
-    }
-    .login-box-msg {
-        color: var(--dark-blue);
-    }
-    .input-group-text {
-        background-color: var(--light-blue);
-        border-color: var(--royal-blue);
-        color: var(--dark-blue);
-    }
-    .form-control {
-        border-color: var(--royal-blue);
-    }
-    .btn-primary {
-        background-color: var(--royal-blue) !important;
-        border-color: var(--royal-blue) !important;
-    }
-    .btn-primary:hover {
-        background-color: var(--dark-blue) !important;
-        border-color: var(--dark-blue) !important;
-    }
-</style>
-{% endblock %}
-
 {% block body %}
 <div class="login-box">
     <div class="login-logo">

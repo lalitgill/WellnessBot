@@ -1,62 +1,12 @@
 {% load adminlte_helpers %}
-{% load static %}
-
-<style>
-    /* Purple Theme */
-    :root {
-        --main-purple: #4169E1;
-        --light-purple: #9370DB;
-        --dark-purple: #4169E1;
-        --very-light-purple: #E6E6FA;
-    }
-
-    .main-sidebar {
-        background-color: var(--main-purple) !important;
-    }
-
-    .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
-    .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
-        background-color: var(--dark-purple) !important;
-        color: #ffffff;
-    }
-
-    .nav-sidebar .nav-item > .nav-link {
-        color: #ffffff !important;
-    }
-
-    .nav-sidebar .nav-item > .nav-link:hover {
-        background-color: var(--light-purple) !important;
-    }
-
-    .brand-link {
-        background-color: var(--dark-purple) !important;
-        color: #ffffff !important;
-    }
-
-    .user-panel {
-        border-bottom: 1px solid var(--very-light-purple);
-    }
-
-    .sidebar .nav-link p {
-        color: #ffffff;
-    }
-
-    .sidebar .nav-link:hover p {
-        color: #ffffff;
-    }
-
-    .nav-header {
-        color: var(--very-light-purple) !important;
-    }
-</style>
-
+{%load static %}
 <!-- Left side column. contains the sidebar -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
     {% block logo %}
         <a href="/" class="brand-link">
-            <img src="{% static 'admin-lte/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            {% block logo_text %}<span class="brand-text font-weight-light">Wellness Bot</span>{% endblock %}
+            <img src="{%static 'admin-lte/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            {% block logo_text %}<span class="brand-text font-weight-light">Wellness Bot </span>{% endblock %}
         </a>
     {% endblock %}
     <!-- sidebar: style can be found in sidebar.less -->
@@ -64,14 +14,14 @@
         <!-- Sidebar user panel -->
         {% block user_panel %}
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{% avatar_url size=90 %}" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">{% firstof request.user.get_full_name request.user.username %}</a>
-            </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% avatar_url size=90 %}" class="img-circle elevation-2" alt="User Image">
         </div>
+        <div class="info">
+          <a href="#" class="d-block">{% firstof request.user.get_full_name request.user.username %}</a>
+        </div>
+      </div>
         {% endblock %}
 
         {% block form %}{% endblock %}
@@ -108,7 +58,7 @@
             {% endblock nav_links %}
             {% endblock nav_links_outer %}
             </ul>
-        </nav>
+            </nav>
         {% endblock nav_links_ul %}
     </div>
     <!-- /.sidebar -->
